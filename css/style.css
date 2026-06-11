@@ -640,4 +640,88 @@ img {
         grid-template-columns: 1fr;
     }
 }
+/* ==========================================================================
+   MELHORIAS DO FOOTER (BARRA MAIS FINA E ANIMAÇÕES DO LOGO ROTATIVO)
+   ========================================================================== */
+
+/* 1. Deixando a barra do footer mais fina e elegante */
+.footer {
+    padding: 30px 0 20px 0; /* Diminuiu o espaçamento interno de cima e de baixo */
+}
+
+.footer-container {
+    gap: 20px; /* Reduz o espaço vertical entre o logo, os ícones e o copyright */
+}
+
+/* 2. Alinhamento perfeito e centralização do Logo Circular */
+.circular-logo-box {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilização da caixa de texto giratória */
+.spinning-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px dashed rgba(147, 51, 234, 0.3); /* Uma bordinha sutil para acabamento */
+    
+    /* Configuração da rotação padrão (Sentido Horário - Leve) */
+    animation: rodarHorario 12s linear infinite;
+    transform-origin: center center; /* Garante que gira estritamente no próprio eixo */
+}
+
+.spinning-text p {
+    color: #a78bfa;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin: 0;
+    text-align: center;
+}
+
+/* 3. Efeitos de passar o mouse (Hover) alternados */
+
+/* Primeiro hover: Passou o mouse normal -> Gira mais rápido no sentido Horário */
+.circular-logo-box:hover .spinning-text {
+    animation: rodarHorarioRapido 3s linear infinite;
+}
+
+/* Segundo hover controlado: Se passar o mouse com um leve toque ativo/focado 
+   ou para alternar a direção, usamos a inversão ao clicar/interagir */
+.circular-logo-box:active .spinning-text {
+    animation: rodarAntiHorarioRapido 2s linear infinite;
+}
+
+
+/* ==========================================================================
+   KEYFRAMES (As regras de movimento do CSS)
+   ========================================================================== */
+
+/* Giro padrão: Horário lento */
+@keyframes rodarHorario {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Giro rápido ao passar o mouse: Horário rápido */
+@keyframes rodarHorarioRapido {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Giro invertido: Anti-horário super rápido */
+@keyframes rodarAntiHorarioRapido {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
 
